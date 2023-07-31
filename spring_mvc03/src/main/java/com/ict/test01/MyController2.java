@@ -1,6 +1,9 @@
 package com.ict.test01;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,15 +23,13 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 @Controller
 public class MyController2 {
 	
-	// 파일 업로드는 post방식이어야 한다
-	// pom.xml에 cos 라이브러리를 넣어줘야 한다
-	@PostMapping(value ="/f_up.do")
+	@PostMapping(value = "/f_up.do")
 	public ModelAndView getFileUp(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView("test01/result3");
 		String path = request.getSession().getServletContext().getRealPath("/resources/images");
 		
 		try {
-			MultipartRequest mr = new MultipartRequest(request, path, 500*1024*1024, "utf-8", new DefaultFileRenamePolicy() );
+			MultipartRequest mr = new MultipartRequest(request, path, 500*1024*1024, "utf-8", new DefaultFileRenamePolicy());
 			String name = mr.getParameter("name");
 			String f_name = mr.getOriginalFileName("f_name");
 			String f_name2 = mr.getFilesystemName("f_name");
@@ -38,15 +40,16 @@ public class MyController2 {
 			SimpleDateFormat day = new SimpleDateFormat("yy.MM.dd hh:mm:dd E");
 			String lastday = day.format(file.lastModified());
 			
-			mv.addObject("name",name);
-			mv.addObject("f_name",f_name);
-			mv.addObject("f_name2",f_name2);
-			mv.addObject("file_type",file_type);
-			mv.addObject("size",size);
-			mv.addObject("lastday",lastday);
+			mv.addObject("name", name);
+			mv.addObject("f_name", f_name);
+			mv.addObject("f_name2", f_name2);
+			mv.addObject("file_type", file_type);
+			mv.addObject("size", size);
+			mv.addObject("lastday", lastday);
+			
 			return mv;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -84,8 +87,28 @@ public class MyController2 {
 			
 			return mv;
 		} catch (Exception e) {
-			return null;
 		}
-		
+		return null;
+	}
+	
+	@GetMapping("/down.do")
+	public void getFileDown(HttpServletRequest request, HttpServletResponse response) {
+		String f_name = request.getParameter("f_name");
+		String path = request.getSession().getServletContext().getRealPath("/resources/images/"+f_name);
+		try {
+			String realPath = URLEncoder.encode(path,"utf-8");
+			response.setContentType("application/x-msdownload");
+			response.setHeader("Content-Disposition","attachiment; filename="+realPath);
+			
+			// 실제 저장
+			File file = new File(new String(path.getBytes()));
+			FileInputStream in = new FileInputStream(file);
+			OutputStream out = response.getOutputStream();
+			
+			// 파일 복사(upload)
+			FileCopyUtils.copy(in, out);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }

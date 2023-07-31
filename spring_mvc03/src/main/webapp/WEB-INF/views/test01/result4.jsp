@@ -12,6 +12,10 @@
 	<h2>파일 이름: ${f_name }</h2>
 	<h2>파일 타입: ${file_type }</h2>
 	<h2>파일 크기: ${size }</h2>
-	<img src="resources/images/${f_name}">
+	<li>
+		<a href="/down.do?f_name=${f_name}">
+			<img src="resources/images/${f_name}">
+		</a>
+	</li>
 </body>
 </html>
