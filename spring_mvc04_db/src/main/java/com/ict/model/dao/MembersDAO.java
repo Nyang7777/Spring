@@ -36,9 +36,6 @@ public class MembersDAO {
 		return result;
 	}
 	
-	public List<MembersVO> guestList(){
-		List<MembersVO> list = sqlSessionTemplate.selectList("members.guestlist");
-		return list;
-	}
+	
 	
 }

@@ -34,10 +34,6 @@ public class MembersServiceImpl implements MembersService {
 		return result;
 	}
 
-	@Override
-	public List<MembersVO> guestList() {
-		List<MembersVO> list = getMembersDAO().guestList();
-		return list;
-	}
+	
 
 }

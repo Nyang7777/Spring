@@ -25,7 +25,7 @@
 	<div>
 		<h2>방명록 리스트</h2>
 		<hr>
-		<p>[<a href="/jsp/GuestController?cmd=write">방명록 쓰기</a>]</p>
+		<p>[<a href="/guestbookAddForm.do">방명록 쓰기</a>]</p>
 		<table>
 			<thead>
 				<tr style="background-color: #99ccff">
@@ -34,26 +34,15 @@
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${empty guest_list}">
+					<c:when test="${empty glist}">
 						<tr><td colspan="4"><h2>원하는 정보가 존재하지 않습니다.</h2></td></tr>
 					</c:when>
 					<c:otherwise>
-						<c:forEach var="k" items="${guest_list }" varStatus="vs">
+						<c:forEach var="k" items="${glist}" varStatus="vs">
 						   <tr>
 						       <td>${vs.count}</td> 
 						       <td>${k.name}</td> 
-						       <td>
-									<form action="/guestbookonelist.do" method="post">
-									<input type="hidden" name="idx" value="${k.idx}">
-									<input type="hidden" name="name" value="${k.name}">
-									<input type="hidden" name="subject" value="${k.subject}">
-									<input type="hidden" name="content" value="${k.content}">
-									<input type="hidden" name="email" value="${k.email}">
-									<input type="hidden" name="pwd" value="${k.pwd}">
-									<input type="hidden" name="regdate" value="${k.regdate}">
-									<input type="submit" value="${k.subject}">
-									</form>
-							   </td> 
+						       <td><a href="/jsp/GuestController?cmd=onelist&idx=${k.idx}"> ${k.subject} </a></td> 
 						       <td>${k.regdate.substring(0,10) }</td>
 						   </tr>
 						</c:forEach>

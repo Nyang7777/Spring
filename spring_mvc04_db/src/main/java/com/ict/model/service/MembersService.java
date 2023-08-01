@@ -6,9 +6,6 @@ import com.ict.model.vo.MembersVO;
 
 public interface MembersService {
 	
-	// guestbook
-	List<MembersVO> guestList();
-	
 	// 전체보기 
 	List<MembersVO> membersList();
 	

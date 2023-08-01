@@ -45,20 +45,6 @@ public class MembersController {
 		return mv;
 	}
 	
-	@GetMapping("/guestbooklist.do")
-	public ModelAndView getGuestBookList() {
-		ModelAndView mv = new ModelAndView("members/guestbook_list");
-		List<MembersVO> list = membersService.guestList();
-		mv.addObject("guest_list",list);
-		return mv;
-	}
 	
-	/*
-	 * @PostMapping("/guestbookonelist.do") public ModelAndView
-	 * getGuestBookOneList(MembersVO mvo) { ModelAndView mv = new
-	 * ModelAndView("members/guestbook_onelist"); List<MembersVO> list =
-	 * membersService.(); MembersVO mvo = membersService.
-	 * mv.addObject("guest_onelist",list); return mv; }
-	 */
 	
 }
