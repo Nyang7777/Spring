@@ -53,7 +53,7 @@ public class GuestBookController {
 		mv.addObject("gvo",gvo);
 		return mv;
 	}
-	
+
 	@PostMapping("/guestbook_delete_Form.do")
 	public ModelAndView getGuestBookDeleteForm(@ModelAttribute("idx") String idx) {
 		ModelAndView mv = new ModelAndView("guestbook/delete");

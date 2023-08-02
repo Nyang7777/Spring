@@ -22,6 +22,7 @@ public class GuestBookDAO {
 		this.sqlSessionTemplate = sqlSessionTemplate;
 	}
 
+	 
 	// 서비스에서 DB처리하는 메서드를 모두 받아줘야 한다
 	// 리스트
 	public List<GuestBookVO> getGuestBookList(){

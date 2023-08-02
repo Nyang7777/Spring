@@ -15,6 +15,7 @@
 	function go_guestbook2() {
 		location.href = "/guestbook2list.do";
 	}
+	
 </script>
 </head>
 <body>
