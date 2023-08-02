@@ -37,7 +37,6 @@ public class GuestBookController2 {
 	public ModelAndView getwriteOK(GuestBookVO2 gvo2) {
 		ModelAndView mv = new ModelAndView("redirect:/guestbook2list.do");
 //		int result = guestBookService2.getGuestBookInsert(gvo2);
-		
 		System.out.println(gvo2.getF_name());
 		return mv;
 	}
