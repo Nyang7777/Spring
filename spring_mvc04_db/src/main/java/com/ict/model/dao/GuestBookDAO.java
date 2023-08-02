@@ -32,4 +32,19 @@ public class GuestBookDAO {
 	public int getGuestBookInsert(GuestBookVO gvo) {
 		return sqlSessionTemplate.insert("guestbook.insert",gvo);
 	}
+	
+	// 상세보기
+	public GuestBookVO getGuestBookOneList(String idx) {
+		return sqlSessionTemplate.selectOne("guestbook.onelist",idx);
+	}
+	
+	// 삭제
+	public int getGuestBookDelete(String idx) {
+		return sqlSessionTemplate.delete("guestbook.delete",idx);
+	}
+	
+	// 수정
+	public int getGuestBookUpdate(GuestBookVO gvo) {
+		return sqlSessionTemplate.update("guestbook.update",gvo);
+	}
 }

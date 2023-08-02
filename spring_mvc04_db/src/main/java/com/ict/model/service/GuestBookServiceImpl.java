@@ -30,8 +30,7 @@ public class GuestBookServiceImpl implements GuestBookService {
 
 	@Override
 	public GuestBookVO getGuestBookOneList(String idx) {
-		// TODO Auto-generated method stub
-		return null;
+		return guestBookDAO.getGuestBookOneList(idx);
 	}
 
 	@Override
@@ -41,14 +40,12 @@ public class GuestBookServiceImpl implements GuestBookService {
 
 	@Override
 	public int getGuestBookUpdate(GuestBookVO gvo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return guestBookDAO.getGuestBookUpdate(gvo);
 	}
 
 	@Override
 	public int getGeustBookDelete(String idx) {
-		// TODO Auto-generated method stub
-		return 0;
+		return guestBookDAO.getGuestBookDelete(idx);
 	}
 	
 }
