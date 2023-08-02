@@ -7,10 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.model.service.GuestBookService2;
-import com.ict.model.vo.GuestBookVO;
 import com.ict.model.vo.GuestBookVO2;
 
 @Controller
@@ -33,13 +34,13 @@ public class GuestBookController2 {
 		return mv;
 	}
 	
-	@PostMapping("/guestbook2_writeOK.do")
-	public ModelAndView getwriteOK(GuestBookVO2 gvo2) {
-		ModelAndView mv = new ModelAndView("redirect:/guestbook2list.do");
-//		int result = guestBookService2.getGuestBookInsert(gvo2);
-		System.out.println(gvo2.getF_name());
-		return mv;
-	}
+//	@PostMapping("/guestbook2_writeOK.do")
+//	public ModelAndView getwriteOK(GuestBookVO2 gvo2) {
+//		ModelAndView mv = new ModelAndView("redirect:/guestbook2list.do");
+////		int result = guestBookService2.getGuestBookInsert(gvo2);
+//		System.out.println(gvo2.getF_name());
+//		return mv;
+//	}
 	
 	@GetMapping("/guestbook2onelist.do")
 	public ModelAndView getonelist(@ModelAttribute("idx") String idx) {
@@ -49,4 +50,13 @@ public class GuestBookController2 {
 		return mv;
 	}
 	
+	 @PostMapping("/guestbook2_writeOK.do")
+		public ModelAndView guestbook2writeOk(@RequestParam("fname2") MultipartFile file/* , GuestBookVO2 gvo */) {
+	     System.out.println(file.getOriginalFilename());
+			/* System.out.println(gvo.getName()); */
+	     System.out.println("write okokokokoko");
+	       
+	        
+	     return new ModelAndView("/guestbook2_writeOK.do");
+	 }
 }

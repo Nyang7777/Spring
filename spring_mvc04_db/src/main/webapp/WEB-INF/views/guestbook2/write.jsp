@@ -48,7 +48,7 @@
 				</tr>
 				<tr align="center">
 					<td bgcolor="#99ccff">첨부파일</td>
-					<td><input type="file" name="f_name" size ="20"/></td>
+					<td><input type="file" name="fname2" size ="20"/></td>
 				</tr>
 				<tr align="center">
 					<td colspan="2">
