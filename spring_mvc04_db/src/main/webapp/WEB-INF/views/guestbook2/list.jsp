@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div>
-	     <h2>방명록</h2>
+	     <h2>방명록222222222222222222222222222</h2>
 	     <hr>
 	     <p>[ <a href="/guestbook2write.do">방명록 쓰기</a> ]</p>
 	     <table>
