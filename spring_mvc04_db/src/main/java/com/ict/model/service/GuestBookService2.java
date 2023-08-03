@@ -18,6 +18,6 @@ public interface GuestBookService2 {
 		// 수정
 		int getGuestBookUpdate(GuestBookVO2 gvo);
 		
-		//삭제
+		// 삭제
 		int getGeustBookDelete(String idx);
 }

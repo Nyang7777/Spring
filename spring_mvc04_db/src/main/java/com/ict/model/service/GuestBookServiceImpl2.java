@@ -16,14 +16,6 @@ public class GuestBookServiceImpl2 implements GuestBookService2 {
 	@Autowired
 	private GuestBookDAO2 guestBookDAO2;
 	
-	public GuestBookDAO2 getGuestBookDAO() {
-		return guestBookDAO2;
-	}
-
-	public void setGuestBookDAO2(GuestBookDAO2 guestBookDAO) {
-		this.guestBookDAO2 = guestBookDAO;
-	}
-
 	@Override
 	public List<GuestBookVO2> getGuestBookList() {
 		return guestBookDAO2.getGuestBookList();
@@ -41,8 +33,7 @@ public class GuestBookServiceImpl2 implements GuestBookService2 {
 
 	@Override
 	public int getGuestBookUpdate(GuestBookVO2 gvo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return guestBookDAO2.getGuestBookUpdate(gvo);
 	}
 
 	@Override

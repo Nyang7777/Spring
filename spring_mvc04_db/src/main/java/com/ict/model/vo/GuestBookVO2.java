@@ -1,7 +1,21 @@
 package com.ict.model.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class GuestBookVO2 {
-	private String idx, name, subject, content, email, pwd, regdate, f_name;
+	// f_name 은 DB에 저장할 이름
+	private String idx, name, subject, content, email, pwd, regdate, f_name, old_f_name;
+	
+	// file파라미터를 저정할 이름
+	private MultipartFile fname2;
+	
+	public MultipartFile getFname2() {
+		return fname2;
+	}
+
+	public void setFname2(MultipartFile fname2) {
+		this.fname2 = fname2;
+	}
 
 	public String getIdx() {
 		return idx;
@@ -66,6 +80,15 @@ public class GuestBookVO2 {
 	public void setF_name(String f_name) {
 		this.f_name = f_name;
 	}
+
+	public String getOld_f_name() {
+		return old_f_name;
+	}
+
+	public void setOld_f_name(String old_f_name) {
+		this.old_f_name = old_f_name;
+	}
+	
 	
 	
 }
