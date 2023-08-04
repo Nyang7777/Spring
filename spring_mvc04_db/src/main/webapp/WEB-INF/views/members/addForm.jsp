@@ -42,7 +42,7 @@
 			return;
 		}
 		
-		f.action = "/members_addMember.do"; // 적절한 URL로 수정
+		f.action = "/member_add.do"; // 적절한 URL로 수정
 		f.submit();
 	}
 </script>
