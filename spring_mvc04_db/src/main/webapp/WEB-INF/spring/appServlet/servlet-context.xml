@@ -27,6 +27,16 @@
 		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
 	</beans:bean>
 	
-	<context:component-scan base-package="com.ict" />
+	<beans:bean id="log_inter" class="com.ict.common.LoginInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/bbs.do"/>
+			<mapping path="/board_insertForm.do"/>
+			<mapping path="/shop_addCart.do"/>
+			<mapping path="/shop_showCart.do"/>
+			<beans:ref bean="log_inter"/>
+		</interceptor>
+	</interceptors>
 	
+	<context:component-scan base-package="com.ict" />
 </beans:beans>
